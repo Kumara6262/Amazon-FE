@@ -91,11 +91,11 @@ resource "aws_eks_node_group" "example" {
     min_size     = 1
   }
   
-  # Free tier compatible instance type (t3.small is not free tier)
+  # Free tier compatible instance type
   instance_types = ["t3.micro"]
   
-  # Use Amazon Linux 2 which is free tier eligible
-  ami_type = "AL2_x86_64"
+  # Use Amazon Linux 2023 which supports newer Kubernetes versions
+  ami_type = "AL2023_x86_64_STANDARD"  # Changed from AL2_x86_64 to AL2023_x86_64_STANDARD
 
   # Ensure that IAM Role permissions are created before and deleted after EKS Node Group handling.
   depends_on = [
